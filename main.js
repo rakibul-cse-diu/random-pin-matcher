@@ -2,6 +2,9 @@ const generatePinBtn = document.querySelector(".generate-btn");
 const displayPin = document.getElementById("generateDis");
 const numBtn = document.querySelectorAll(".button");
 const displayInput = document.getElementById("inputDis");
+const submitPin = document.getElementById("submitBtn");
+const notifyRight = document.querySelector(".right")
+const notifyWrong = document.querySelector(".wrong")
 
 // generate pin
 generatePinBtn.addEventListener("click", () => {
@@ -20,7 +23,18 @@ numBtn.forEach(btn => {
         } else {
             displayInput.value = displayInput.value + triggredBtn;
         }
-
-        console.log(triggredBtn);
     });
+})
+
+// pin submition
+submitPin.addEventListener("click", () => {
+    if (displayPin.value == displayInput.value) {
+        notifyWrong.style.display = "none";
+        notifyRight.style.display = "block";
+        displayPin.value = '';
+        displayInput.value = '';
+    } else {
+        notifyWrong.style.display = "block";
+        notifyRight.style.display = "none";
+    }
 })
